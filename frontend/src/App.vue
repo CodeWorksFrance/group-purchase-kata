@@ -1,85 +1,63 @@
-<script setup>
-import { RouterLink, RouterView } from 'vue-router'
-import HelloWorld from './components/HelloWorld.vue'
-</script>
-
 <template>
-  <header>
-    <img alt="Vue logo" class="logo" src="@/assets/logo.svg" width="125" height="125" />
+  <v-app id="inspire" :theme="userTheme">
+    <v-navigation-drawer v-model="drawer">
+      <!-- todo menu -->
+    </v-navigation-drawer>
 
-    <div class="wrapper">
-      <HelloWorld msg="You did it!" />
-
-      <nav>
-        <RouterLink to="/">Home</RouterLink>
-        <RouterLink to="/about">About</RouterLink>
-      </nav>
-    </div>
-  </header>
-
-  <RouterView />
+    <v-app-bar color="primary">
+      <v-app-bar-nav-icon @click="drawer = !drawer"></v-app-bar-nav-icon>
+      <v-toolbar-title>Application</v-toolbar-title>
+      <v-spacer></v-spacer>
+      <v-btn icon @click="toggleTheme">
+        <v-icon>mdi-theme-light-dark</v-icon>
+      </v-btn>
+    </v-app-bar>
+    <v-main class="main">
+      <RouterView />
+    </v-main>
+  </v-app>
 </template>
 
+<script setup>
+import { RouterLink, RouterView } from 'vue-router'
+import { onMounted, ref, computed } from 'vue'
+
+const drawer = ref(null)
+
+const setTheme = (theme) => {
+  localStorage.setItem('user-theme', theme);
+  userTheme.value = theme;
+}
+
+const getTheme = () => {
+  return localStorage.getItem('user-theme');
+};
+
+const toggleTheme = () => {
+  const activeTheme = localStorage.getItem('user-theme');
+  if (activeTheme === 'light') {
+    setTheme('dark');
+  } else {
+    setTheme('light');
+  }
+}
+
+const getMediaPreference = () => {
+  const hasDarkPreference = window.matchMedia('(prefers-color-scheme: dark)').matches;
+  if (hasDarkPreference) {
+    return 'dark';
+  } else {
+    return 'light';
+  }
+}
+const userTheme = ref(getTheme() || getMediaPreference());
+
+onMounted(() => setTheme(userTheme.value));
+
+</script>
+
 <style scoped>
-header {
-  line-height: 1.5;
-  max-height: 100vh;
-}
 
-.logo {
-  display: block;
-  margin: 0 auto 2rem;
-}
-
-nav {
-  width: 100%;
-  font-size: 12px;
-  text-align: center;
-  margin-top: 2rem;
-}
-
-nav a.router-link-exact-active {
-  color: var(--color-text);
-}
-
-nav a.router-link-exact-active:hover {
-  background-color: transparent;
-}
-
-nav a {
-  display: inline-block;
-  padding: 0 1rem;
-  border-left: 1px solid var(--color-border);
-}
-
-nav a:first-of-type {
-  border: 0;
-}
-
-@media (min-width: 1024px) {
-  header {
-    display: flex;
-    place-items: center;
-    padding-right: calc(var(--section-gap) / 2);
-  }
-
-  .logo {
-    margin: 0 2rem 0 0;
-  }
-
-  header .wrapper {
-    display: flex;
-    place-items: flex-start;
-    flex-wrap: wrap;
-  }
-
-  nav {
-    text-align: left;
-    margin-left: -1rem;
-    font-size: 1rem;
-
-    padding: 1rem 0;
-    margin-top: 1rem;
-  }
+.main {
 }
 </style>
