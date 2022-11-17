@@ -5,7 +5,7 @@ import App from './App.vue'
 import router from './router'
 
 // Vuetify
-import vuetify from "./plugings/vuetify";
+import vuetify from "./plugins/vuetify";
 
 const app = createApp(App)
 
