@@ -22,48 +22,47 @@
 </template>
 
 <script setup>
-import { RouterLink, RouterView } from 'vue-router'
-import { onMounted, ref, computed } from 'vue'
+import { onMounted, ref } from "vue";
 
-const drawer = ref(null)
+const drawer = ref(null);
 
 const setTheme = (theme) => {
-  localStorage.setItem('user-theme', theme);
+  localStorage.setItem("user-theme", theme);
   userTheme.value = theme;
-}
+};
 
 const getTheme = () => {
-  return localStorage.getItem('user-theme');
+  return localStorage.getItem("user-theme");
 };
 
 const toggleTheme = () => {
-  const activeTheme = localStorage.getItem('user-theme');
-  if (activeTheme === 'light') {
-    setTheme('dark');
+  const activeTheme = localStorage.getItem("user-theme");
+  if (activeTheme === "light") {
+    setTheme("dark");
   } else {
-    setTheme('light');
+    setTheme("light");
   }
-}
+};
 
 const getMediaPreference = () => {
-  const hasDarkPreference = window.matchMedia('(prefers-color-scheme: dark)').matches;
+  const hasDarkPreference = window.matchMedia(
+    "(prefers-color-scheme: dark)"
+  ).matches;
   if (hasDarkPreference) {
-    return 'dark';
+    return "dark";
   } else {
-    return 'light';
+    return "light";
   }
-}
+};
 const openGithubLink = () => {
-  window.open('//github.com/CodeWorksFrance/group-purchase-kata')
-}
+  window.open("//github.com/CodeWorksFrance/group-purchase-kata");
+};
 const userTheme = ref(getTheme() || getMediaPreference());
 
 onMounted(() => setTheme(userTheme.value));
-
 </script>
 
 <style scoped>
-
 .main {
 }
 </style>
