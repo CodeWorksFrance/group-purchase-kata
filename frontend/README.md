@@ -1,14 +1,12 @@
 # frontend
 
-This template should help get you started developing with Vue 3 in Vite.
+Front part of group-purchase-kata
 
-## Recommended IDE Setup
-
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin).
-
-## Customize configuration
-
-See [Vite Configuration Reference](https://vitejs.dev/config/).
+This project use :
+* Vue 3 as front framework
+* Vuetify as UI framework
+* Vitest as unit test framework
+* Vite to set up a development environment
 
 ## Project Setup
 
