@@ -11,6 +11,9 @@
       <v-btn icon @click="toggleTheme">
         <v-icon>mdi-theme-light-dark</v-icon>
       </v-btn>
+      <v-btn icon @click="openGithubLink">
+        <v-icon>mdi-github</v-icon>
+      </v-btn>
     </v-app-bar>
     <v-main class="main">
       <RouterView />
@@ -49,6 +52,9 @@ const getMediaPreference = () => {
   } else {
     return 'light';
   }
+}
+const openGithubLink = () => {
+  window.open('//github.com/CodeWorksFrance/group-purchase-kata')
 }
 const userTheme = ref(getTheme() || getMediaPreference());
 
