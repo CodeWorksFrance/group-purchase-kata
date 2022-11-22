@@ -3,7 +3,7 @@
   "version": "0.0.1",
   "description": "backend of group purchase kata",
   "author": "Tim & Alexis",
-  "private": true,
+  "private": false,
   "license": "UNLICENSED",
   "scripts": {
     "prebuild": "rimraf dist",
