@@ -7,9 +7,18 @@ services:
       - PORT=3000
     ports:
       - "3000:3000"
-#    networks:
-#      - app-network
-#
-#networks:
-#  app-network:
-#    driver: bridge
+    networks:
+      - app-network
+  frontend-app:
+    build:
+      context: ..
+      dockerfile: ./docker/frontend.dockerfile
+    environment:
+      - PORT=8000
+    ports:
+      - "8000:8000"
+    networks:
+      - app-network
+networks:
+  app-network:
+    driver: bridge
