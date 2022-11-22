@@ -1,14 +1,14 @@
 import { Controller, Post, Body } from '@nestjs/common';
 import { OrderService } from '../services/order.service';
-import { CreateBillDto } from "../dto/createBill.dto";
-import { BillInterface } from "../interfaces/bill.interface";
+import { CreateBillDto } from '../dto/createBill.dto';
+import { BillInterface } from '../interfaces/bill.interface';
 
-@Controller("/order")
+@Controller('/order')
 export class OrderController {
   constructor(private readonly orderService: OrderService) {}
 
-  @Post("/bill")
+  @Post('/bill')
   async createBill(@Body() createBill: CreateBillDto): Promise<BillInterface> {
-    return this.orderService.createBill(createBill)
+    return this.orderService.createBill(createBill);
   }
 }

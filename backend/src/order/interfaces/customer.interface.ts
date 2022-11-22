@@ -1,4 +1,4 @@
 export interface CustomerInterface {
-    name: string
-    dateOfBirth: Date
+  name: string;
+  dateOfBirth: Date;
 }

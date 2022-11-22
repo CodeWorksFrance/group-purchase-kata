@@ -1,7 +1,7 @@
-import { OrderItemInterface } from "./orderItem.interface";
+import { OrderItemInterface } from './orderItem.interface';
 
 export interface OrderInterface {
-    items: [OrderItemInterface]
-    date: Date
-    shipping: number
+  items: [OrderItemInterface];
+  date: Date;
+  shipping: number;
 }
