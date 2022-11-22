@@ -1,4 +1,4 @@
-# frontend
+# Frontend
 
 Front part of group-purchase-kata
 
@@ -37,3 +37,12 @@ npm run test:unit
 ```sh
 npm run lint
 ```
+
+
+## Configuration développement
+
+### variables d'env
+
+En mode developpement ```Vite``` charge automatique le fichier ```.env.development```
+Copier le fichier de configuration ```.env.development``` en ```.env.development.local```
+afin de pouvoir modifier les variables sans que cela ne soit versionné

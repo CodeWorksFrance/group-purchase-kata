@@ -1,12 +1,22 @@
 <template>
   <v-app id="inspire" :theme="userTheme">
-    <v-navigation-drawer v-model="drawer">
-      <!-- todo menu -->
+    <v-navigation-drawer v-model="drawer" v-if="useAuthStore().isLogged()">
+      <v-btn
+        variant="text"
+        block
+        prepend-icon="mdi-logout"
+        @click="useAuthStore().logout()"
+      >
+        Se déconnecter
+      </v-btn>
     </v-navigation-drawer>
 
     <v-app-bar color="primary">
-      <v-app-bar-nav-icon @click="drawer = !drawer"></v-app-bar-nav-icon>
-      <v-toolbar-title>Application</v-toolbar-title>
+      <v-app-bar-nav-icon
+        @click="drawer = !drawer"
+        v-if="useAuthStore().isLogged()"
+      />
+      <v-toolbar-title>Group Purchase App</v-toolbar-title>
       <v-spacer></v-spacer>
       <v-btn icon @click="toggleTheme">
         <v-icon>mdi-theme-light-dark</v-icon>
@@ -23,6 +33,7 @@
 
 <script setup>
 import { onMounted, ref } from "vue";
+import { useAuthStore } from "./stores/auth";
 
 const drawer = ref(null);
 
